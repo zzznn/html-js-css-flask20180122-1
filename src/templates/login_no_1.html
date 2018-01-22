@@ -1,0 +1,69 @@
+    <html>  
+    <head>  
+        <title>登陆异常</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+        <script type="text/javascript">  
+            //窗体改变大小时触发事件  
+            window.onresize = setViewSize;  
+            var marginLeft=0;  
+            var marginTop=0;  
+            //设置画布大小，登录页面显示在屏幕最中间  
+            function setViewSize() {  
+                //计算屏幕大小  
+                var w=window.innerWidth  
+                || document.documentElement.clientWidth  
+                || document.body.clientWidth;  
+                var h=window.innerHeight  
+                || document.documentElement.clientHeight  
+                || document.body.clientHeight;  
+                //设置登陆div的位置  
+                marginLeft = (w-468)/2;  
+                marginTop = (h-382)/2;
+                document.getElementById("loginFormMain").style.marginLeft=marginLeft;  
+                document.getElementById("loginFormMain").style.marginTop=marginTop;  
+            }  
+
+            //默认聚焦在用户名输入框上
+            function focusOnUsername() {
+                //调整画布大小和登陆框位置
+                setViewSize();
+                //默认聚焦在输入框上
+                if (document.loginForm) {
+                    var usernameInput = document.loginForm.username;
+                    if (usernameInput) {
+                        usernameInput.focus();
+                    }
+                }
+                return;
+            }
+            //用于返回上一页
+            function goBack(){
+                window.history.go(-1)
+            }
+
+
+        </script>  
+    </head>  
+      
+    <body bgcolor="#F0FFFF" onload="javascript:focusOnUsername();" >
+         <form  action="success.html" name="loginForm" >  
+         <div  id="loginFormMain">  
+             <table bgcolor="#87CEFA" style="width:468px;height:302px;background-color ; gray;text-align: center;">
+                  <tr  style="font-size:29px;color: #FF0000">
+                     <th colspan="2" align="center" >错误提示</th>
+                  </tr>
+                  <tr style="font-size:19px">
+                      <td><b>对不起，您输入的账号与密码不匹配</b></td>
+                  </tr>
+                 <tr style="font-size:19px">
+                     <td><b>请您返回上一页重新输入 ！</b></td>
+                  </tr>
+                  <tr>
+                      <td align="center" ><input  formmethod="post" type="button" onclick="goBack()" style="cursor: pointer;font-style: inherit;" name="submit"   value="返回上一页" >
+                          <!--<input type="button" value="返回上一页" onclick="goBack()">-->
+                  </tr>  
+             </table>  
+         </div>  
+          </form>  
+    </body>  
+    </html>  
